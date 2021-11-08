@@ -1,0 +1,50 @@
+<project name="appName" default="jarApp" basedir="C:\ssd\ant">
+
+
+<!--  create directoy structure -->
+  <property file="C:\ssd\ant\${propfile}"/>
+  <property name="appName" value="c:" />
+  <property name="project" value="\ssd\ant" />
+  <property name="build" value="\build" />
+  <property name="deployDir" value="c:\ssd\ant\deploy" />
+  <property name="src" value="\src" />
+  <property name="srcDir" value="${appName}${project}${src}" />
+  <property name="buildDir" value="${appName}${project}${build}" />
+  
+  <property name="ant" value="C:\ant\apache-ant-1.6.2\lib\ant.jar" />
+  <property name="classpath" value="${ant}"/>
+  
+<!--  copy all Java Files from src to build and exclude the class files-->
+<target name="copyDir" description="copy all Java Files from src to build">
+  <copy todir="${buildDir}">
+    <fileset dir="${srcDir}" excludes="**/*.class"/>
+  </copy>
+</target>
+
+<!--  touch all the files -->
+  <target name="timestamp" description="adds timestamp to logfile" depends="copyDir" >
+    <tstamp>
+      <format property="touch.time" pattern="MM/dd/yyyy hh:mm aa"/>
+    </tstamp> 
+    <echo message="refreshScreen script started on ${touch.time}"/>
+  </target>
+
+<!--  Turn OFF debugs -->  
+  <target name="turnOffDebugs" depends="timestamp" if="TURN_OFF_DEBUGS" description="Turn off debugs when Prod Deploy">
+    <replace dir="${buildDir}" 
+     token="private final static boolean DEBUG = true;" 
+     value="private final static boolean DEBUG = false;"/>
+  </target>
+ 
+<!--  Compile java Files -->  
+  <target name="javac" depends="turnOffDebugs" description="compiles the java files" >
+    <javac srcdir="${buildDir}" destdir="${buildDir}" classpath="${classpath}" debug="on">
+    </javac>
+  </target>
+  
+<!--  Jar up the Files -->  
+ <target name="jarApp" description="this creates a jar file" depends="javac">
+     <jar jarfile="${deployDir}/app.jar" basedir="${buildDir}"/>
+  </target> 
+
+</project> 

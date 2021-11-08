@@ -1,0 +1,45 @@
+Detected Java version: 1.5 in: C:\Program Files\Java\jdk1.5.0_05\jre
+Detected OS: Windows XP
+parsing buildfile C:\ssd\ant\buildAndDeployAppName.xml with URI = file:///C:/ssd/ant/buildAndDeployAppName.xml
+Project base dir set to: C:\ssd\ant
+ [property] Loading C:\ssd\ant\PROD_appName.properties
+Build sequence for target `jarApp' is [copyDir, timestamp, turnOffDebugs, javac, jarApp]
+Complete build sequence is [copyDir, timestamp, turnOffDebugs, javac, jarApp, ]
+
+copyDir:
+     [copy] TestMe.java omitted as TestMe.java is up to date.
+     [copy] bm\ProgramJava.java omitted as bm/ProgramJava.java is up to date.
+     [copy]  omitted as  is up to date.
+     [copy] bm omitted as bm is up to date.
+
+timestamp:
+     [echo] refreshScreen script started on 11/26/2007 12:08 AM
+
+turnOffDebugs:
+  [replace] Replacing in C:\ssd\ant\build\TestMe.class: private final static boolean DEBUG = true; --> private final static boolean DEBUG = false;
+  [replace] Replacing in C:\ssd\ant\build\TestMe.java: private final static boolean DEBUG = true; --> private final static boolean DEBUG = false;
+  [replace] Replacing in C:\ssd\ant\build\bm\ProgramJava.class: private final static boolean DEBUG = true; --> private final static boolean DEBUG = false;
+  [replace] Replacing in C:\ssd\ant\build\bm\ProgramJava.java: private final static boolean DEBUG = true; --> private final static boolean DEBUG = false;
+
+javac:
+    [javac] TestMe.class skipped - don't know how to handle it
+    [javac] TestMe.java omitted as TestMe.class is up to date.
+    [javac] bm\ProgramJava.class skipped - don't know how to handle it
+    [javac] bm\ProgramJava.java omitted as bm/ProgramJava.class is up to date.
+
+jarApp:
+      [jar] TestMe.class added as TestMe.class is outdated.
+      [jar] TestMe.java added as TestMe.java is outdated.
+      [jar] bm\ProgramJava.class added as bm/ProgramJava.class is outdated.
+      [jar] bm\ProgramJava.java added as bm/ProgramJava.java is outdated.
+      [jar] Building jar: C:\ssd\ant\deploy\app.jar
+      [jar] adding directory META-INF/
+      [jar] adding entry META-INF/MANIFEST.MF
+      [jar] adding entry TestMe.class
+      [jar] adding entry TestMe.java
+      [jar] adding directory bm/
+      [jar] adding entry bm/ProgramJava.class
+      [jar] adding entry bm/ProgramJava.java
+
+BUILD SUCCESSFUL
+Total time: 1 second
