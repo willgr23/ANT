@@ -1,7 +1,10 @@
 # ANT
 Another Neat Tool
+
 To download git tool follow the below link and download the 64bit file:https://git-scm.com/download/win
+
 To download the ANT repository execute the following command through the command line on your windows system: git clone https://github.com/willgr23/ANT.git
+
 Create directories:
 1.	Create a directory on your c drive c:\ssd\ant
 2.	Create directory c:\download
